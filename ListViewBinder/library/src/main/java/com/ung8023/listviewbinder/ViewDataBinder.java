@@ -3,7 +3,7 @@ package com.ung8023.listviewbinder;
 import android.support.annotation.LayoutRes;
 
 /**
- * @author feilang-liuyansong
+ * @author Ung8023
  * @date 2018/3/16 17:54
  * @description
  */

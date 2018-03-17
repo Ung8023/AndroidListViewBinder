@@ -3,7 +3,7 @@ package com.ung8023.listviewbinder;
 import android.view.ViewGroup;
 
 /**
- * @author feilang-liuyansong
+ * @author Ung8023
  * @date 2018/3/16 17:31
  * @description
  */
@@ -22,4 +22,5 @@ public interface BinderDelegate {
     void setAdapter(BinderAdapter abstractBinderAdapter);
 
     int getItemViewType(int position);
+
 }
