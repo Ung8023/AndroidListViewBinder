@@ -4,14 +4,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.ung8023.listviewbinder.ViewDataBinder;
+import com.ung8023.listviewbinder.BaseViewDataBinder;
 import com.ung8023.listviewbinder.ViewHolder;
 
 /**
  * Created by Ung8023 on 2018/3/18.
  */
 
-public class MyViewDataBinder implements ViewDataBinder<DataEntity>{
+public class MyViewDataBinder extends BaseViewDataBinder<DataEntity> {
     @Override
     public void bindViewData(ViewHolder viewHolder, DataEntity data, int position) {
         switch (viewHolder.getItemViewType()) {
@@ -46,10 +46,5 @@ public class MyViewDataBinder implements ViewDataBinder<DataEntity>{
         }else {
             return R.layout.item_view_text_image;
         }
-    }
-
-    @Override
-    public int getItemViewType(int position) {
-        return getLayoutRes(position);
     }
 }

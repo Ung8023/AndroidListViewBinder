@@ -3,6 +3,7 @@ package com.ung8023.listviewbinder;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
+import java.lang.ref.WeakReference;
 import java.util.List;
 
 /**
@@ -15,7 +16,7 @@ public class BaseBinderDelegate<Data> implements BinderDelegate{
 
     protected List<Data> mData;
     protected ViewDataBinder<Data> mViewDataBinder;
-    protected BinderAdapter mBinderAdapter;
+    protected WeakReference<BinderAdapter> mBinderAdapter;
 
     public BaseBinderDelegate(ViewDataBinder viewDataBinder) {
         this.mViewDataBinder = viewDataBinder;
@@ -51,12 +52,18 @@ public class BaseBinderDelegate<Data> implements BinderDelegate{
     }
 
     public void notifyDataSetChanged() {
-        mBinderAdapter.notifyDataSetChanged();
+        if (mBinderAdapter.get() == null) {
+            return;
+        }
+        mBinderAdapter.get().notifyDataSetChanged();
     }
 
     @Override
     public void setAdapter(BinderAdapter binderAdapter) {
-        this.mBinderAdapter = binderAdapter;
+        if (mBinderAdapter == null) {
+            this.mBinderAdapter = new WeakReference<BinderAdapter>(binderAdapter);
+            return;
+        }
     }
 
     @Override
