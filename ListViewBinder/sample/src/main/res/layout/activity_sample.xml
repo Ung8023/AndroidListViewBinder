@@ -8,7 +8,10 @@
     <Button
         android:onClick="getData"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:text="@string/sample_btn_get_data"
+        android:textAllCaps="false"
+        />
     <ListView
         android:id="@+id/listView"
         android:layout_width="match_parent"

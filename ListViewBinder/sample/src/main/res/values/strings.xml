@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">ListViewBinder</string>
+    <string name="sample_btn_get_data">getData</string>
 </resources>
