@@ -1,5 +1,6 @@
 package com.ung8023.sample;
 
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -14,6 +15,7 @@ import com.ung8023.listviewbinder.ViewHolder;
 public class MyViewDataBinder extends BaseViewDataBinder<DataEntity> {
     @Override
     public void bindViewData(ViewHolder viewHolder, DataEntity data, int position) {
+        super.bindViewData(viewHolder, data, position);
         switch (viewHolder.getItemViewType()) {
             case R.layout.item_view_image_text:
                 bindCommonData(viewHolder, data);
@@ -46,5 +48,10 @@ public class MyViewDataBinder extends BaseViewDataBinder<DataEntity> {
         }else {
             return R.layout.item_view_text_image;
         }
+    }
+
+    @Override
+    public View getItemView() {
+        return null;
     }
 }

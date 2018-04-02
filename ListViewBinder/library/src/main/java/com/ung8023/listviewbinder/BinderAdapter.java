@@ -1,8 +1,11 @@
 package com.ung8023.listviewbinder;
 
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+
+import java.util.List;
 
 /**
  * @author Ung8023
@@ -10,28 +13,36 @@ import android.widget.BaseAdapter;
  * @description
  */
 
-public class BinderAdapter extends BaseAdapter{
+public class BinderAdapter<Data> extends BaseAdapter{
 
-    BinderDelegate binderDelegate;
+    private List<Data> mData;
+    public ViewDataBinder<Data> viewDataBinder;
 
-    public BinderAdapter(BinderDelegate binderDelegate) {
-        this.binderDelegate = binderDelegate;
-        binderDelegate.setAdapter(this);
+    public BinderAdapter(ViewDataBinder<Data> viewDataBinder) {
+        this.viewDataBinder = viewDataBinder;
     }
 
     @Override
     public int getCount() {
-        return binderDelegate.getCount();
+        return mData == null ? 0 : mData.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return binderDelegate.getItem(position);
+        return mData.get(position);
     }
 
     @Override
     public long getItemId(int position) {
-        return binderDelegate.getItemId(position);
+        return position;
+    }
+
+    public List<Data> getData() {
+        return mData;
+    }
+
+    public void setData(List<Data> mData) {
+        this.mData = mData;
     }
 
     @Override
@@ -43,15 +54,24 @@ public class BinderAdapter extends BaseAdapter{
         if (holder == null || holder.getItemViewType() != getItemViewType(position)) {
             holder = onCreateViewHolder(parent, position);
         }
-        binderDelegate.bindData(holder, position);
-
+        viewDataBinder.bindViewData(holder, mData.get(position), position);
         holder.itemView.setTag(holder);
         return holder.itemView;
     }
 
     protected ViewHolder onCreateViewHolder(ViewGroup parent, int position) {
-        ViewHolder viewHolder =  binderDelegate.createViewHolder(parent, position);
-        viewHolder.mItemViewType = binderDelegate.getItemViewType(position);
+
+        View view ;
+
+        if (viewDataBinder.getItemView() == null) {
+           view =  LayoutInflater.from(parent.getContext()).inflate(viewDataBinder.getLayoutRes(position), parent, false);
+        }else {
+            view = viewDataBinder.getItemView();
+        }
+
+        ViewHolder viewHolder = new ViewHolder(view);
+        viewHolder.mItemViewType = viewDataBinder.getItemViewType(position);
+
         return viewHolder;
     }
 }

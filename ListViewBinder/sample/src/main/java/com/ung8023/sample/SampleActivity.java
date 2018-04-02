@@ -4,10 +4,10 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ListView;
+import android.widget.Toast;
 
-import com.ung8023.listviewbinder.BaseBinderDelegate;
 import com.ung8023.listviewbinder.BinderAdapter;
-import com.ung8023.listviewbinder.ViewDataBinder;
+import com.ung8023.listviewbinder.OnItemClickListener;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -16,16 +16,21 @@ public class SampleActivity extends AppCompatActivity {
 
     ListView listView;
     List<DataEntity> list;
-    BaseBinderDelegate<DataEntity> delegate;
+    BinderAdapter<DataEntity> adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sample);
         listView = findViewById(R.id.listView);
-        ViewDataBinder<DataEntity> viewDataBinder = new MyViewDataBinder();
-        delegate = new BaseBinderDelegate<>(viewDataBinder);
-        BinderAdapter adapter = new BinderAdapter(delegate);
+        MyViewDataBinder myViewDataBinder = new MyViewDataBinder();
+        myViewDataBinder.setOnItemClickListener(new OnItemClickListener<DataEntity>() {
+            @Override
+            public void onItemClick(View view, DataEntity dataEntity, int position) {
+                Toast.makeText(view.getContext(), dataEntity.getTitle(), position).show();
+            }
+        });
+        adapter = new BinderAdapter<>(myViewDataBinder);
         listView.setAdapter(adapter);
     }
 
@@ -57,7 +62,7 @@ public class SampleActivity extends AppCompatActivity {
         list.add(new DataEntity("http://img5.imgtn.bdimg.com/it/u=130690856,2006066007&fm=27&gp=0.jpg", "XXXXXXXXXXXXXXXXXX", "xxxxxxxxxxxxxxxxxxx"));
         list.add(new DataEntity("http://img2.imgtn.bdimg.com/it/u=4224156049,2171272469&fm=27&gp=0.jpg", "YYYYYYYYYYYYYYYYYY", "yyyyyyyyyyyyyyyyyyy"));
         list.add(new DataEntity("http://img5.imgtn.bdimg.com/it/u=4217379907,2439908270&fm=27&gp=0.jpg", "ZZZZZZZZZZZZZZZZZZ", "zzzzzzzzzzzzzzzzzzz"));
-        delegate.setData(list);
-        delegate.notifyDataSetChanged();
+        adapter.setData(list);
+        adapter.notifyDataSetChanged();
     }
 }
