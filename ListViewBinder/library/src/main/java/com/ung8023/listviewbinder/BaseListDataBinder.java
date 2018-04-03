@@ -9,6 +9,7 @@ import com.ung8023.base.OnItemClickListener;
 /**
  * A BaseListDataBinder with item click listener
  * @param <Data>
+ * @author Ung
  */
 public abstract class BaseListDataBinder<Data> implements ListViewDataBinder<Data> {
 

@@ -37,4 +37,7 @@ public abstract class BaseRecyclerAdapter<Data, V extends View> extends Recycler
         this.dataList = dataList;
     }
 
+    public List<Data> getDataList() {
+        return dataList;
+    }
 }

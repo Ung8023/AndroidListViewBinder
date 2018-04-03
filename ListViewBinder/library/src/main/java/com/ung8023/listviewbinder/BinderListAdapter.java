@@ -17,7 +17,7 @@ import java.util.List;
 
 public class BinderListAdapter<Data> extends BaseAdapter{
 
-    private List<Data> mData;
+    protected List<Data> mData;
     public ViewDataBinder<ViewHolder, Data> viewDataBinder;
 
     public BinderListAdapter(ViewDataBinder<ViewHolder, Data> viewDataBinder) {
