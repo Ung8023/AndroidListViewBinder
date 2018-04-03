@@ -3,7 +3,7 @@ package com.ung8023.listviewbinder;
 import android.view.View;
 
 /**
- * @author Ung8023
+ * @author Ung
  * @date 2018/3/16 18:27
  * @description
  */

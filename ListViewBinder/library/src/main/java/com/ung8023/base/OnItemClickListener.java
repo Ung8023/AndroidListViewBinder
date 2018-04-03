@@ -1,9 +1,9 @@
-package com.ung8023.listviewbinder;
+package com.ung8023.base;
 
 import android.view.View;
 
 /**
- * @author Ung8023
+ * @author Ung
  * @date 2018/4/2 16:11
  * @description
  */

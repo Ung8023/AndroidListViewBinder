@@ -5,20 +5,22 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
+import com.ung8023.base.ViewDataBinder;
+
 import java.util.List;
 
 /**
- * @author Ung8023
+ * @author Ung
  * @date 2018/3/16 17:30
  * @description
  */
 
-public class BinderAdapter<Data> extends BaseAdapter{
+public class BinderListAdapter<Data> extends BaseAdapter{
 
     private List<Data> mData;
-    public ViewDataBinder<Data> viewDataBinder;
+    public ViewDataBinder<ViewHolder, Data> viewDataBinder;
 
-    public BinderAdapter(ViewDataBinder<Data> viewDataBinder) {
+    public BinderListAdapter(ViewDataBinder<ViewHolder, Data> viewDataBinder) {
         this.viewDataBinder = viewDataBinder;
     }
 
@@ -64,7 +66,7 @@ public class BinderAdapter<Data> extends BaseAdapter{
         View view ;
 
         if (viewDataBinder.getItemView() == null) {
-           view =  LayoutInflater.from(parent.getContext()).inflate(viewDataBinder.getLayoutRes(position), parent, false);
+           view =  LayoutInflater.from(parent.getContext()).inflate(viewDataBinder.getLayoutRes(viewDataBinder.getItemViewType(position)), parent, false);
         }else {
             view = viewDataBinder.getItemView();
         }

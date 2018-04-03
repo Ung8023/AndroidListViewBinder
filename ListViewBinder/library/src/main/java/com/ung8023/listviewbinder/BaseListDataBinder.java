@@ -2,21 +2,19 @@ package com.ung8023.listviewbinder;
 
 import android.view.View;
 
+import com.ung8023.base.ListViewDataBinder;
+import com.ung8023.base.OnItemClickListener;
+
 /**
- * Created by Y on 2018/3/21.
+ * Created by Ung on 2018/3/21.
  */
 
-public abstract class BaseViewDataBinder<Data> implements ViewDataBinder<Data> {
+public abstract class BaseListDataBinder<Data> implements ListViewDataBinder<Data> {
 
     private OnItemClickListener<Data> onItemClickListener;
 
     public void setOnItemClickListener(OnItemClickListener<Data> onItemClickListener) {
         this.onItemClickListener = onItemClickListener;
-    }
-
-    @Override
-    public int getItemViewType(int position) {
-        return getLayoutRes(position);
     }
 
     @Override

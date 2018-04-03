@@ -1,19 +1,19 @@
-package com.ung8023.listviewbinder;
+package com.ung8023.base;
 
 import android.support.annotation.LayoutRes;
 import android.view.View;
 
 /**
- * @author Ung8023
+ * @author Ung
  * @date 2018/3/16 17:54
  * @description
  */
 
-public interface ViewDataBinder<Data> {
+public interface ViewDataBinder<ViewHolder, Data> {
 
     void bindViewData(ViewHolder viewHolder, Data data, int position);
 
-    @LayoutRes int getLayoutRes(int position);
+    @LayoutRes int getLayoutRes(int viewType);
 
     int getItemViewType(int position);
 
