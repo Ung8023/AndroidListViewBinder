@@ -5,10 +5,11 @@ import android.view.View;
 import com.ung8023.base.ListViewDataBinder;
 import com.ung8023.base.OnItemClickListener;
 
-/**
- * Created by Ung on 2018/3/21.
- */
 
+/**
+ * A BaseListDataBinder with item click listener
+ * @param <Data>
+ */
 public abstract class BaseListDataBinder<Data> implements ListViewDataBinder<Data> {
 
     private OnItemClickListener<Data> onItemClickListener;

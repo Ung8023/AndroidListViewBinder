@@ -18,6 +18,13 @@ allprojects {
     repositories {
         google()
         jcenter()
+        maven{url "https://jitpack.io"}
+        mavenCentral()
+    }
+
+    tasks.withType(Javadoc) {
+        options.addStringOption('Xdoclint:none', '-quiet')
+        options.addStringOption('encoding', 'UTF-8')
     }
 }
 
@@ -25,16 +32,18 @@ task clean(type: Delete) {
     delete rootProject.buildDir
 }
 
-tasks.withType(JavaCompile) {
-    options.encoding = 'UTF-8'
-}
+
+
+
 
 ext {
-    userOrg = '*****'
+    userOrg = 'ung'
     groupId = 'com.ung8023'
     uploadName = 'android-list-binder'
     publishVersion = '1.0.0'
-    desc = 'Request code can be generated automatically'
+    desc = 'replace Adapter with ListBinderAdapter and RecyclerBinderAdapter，Use ViewDataBinder to bind Data'
     website = 'https://github.com/Ung8023/AndroidListViewBinder'
     licences = ['Apache-2.0']
 }
+
+//gradlew clean build bintrayUpload -PbintrayUser=*****  -PbintrayKey=*****  -PdryRun=false

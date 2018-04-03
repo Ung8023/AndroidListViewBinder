@@ -8,7 +8,7 @@ import com.ung8023.base.RecyclerViewDataBinder;
 /**
  * @author Ung
  * @date 2018/4/3 10:59
- * @description
+ * @description DataBinder for RecyclerView
  */
 
 public abstract class BaseRecyclerDataBinder<Data> implements RecyclerViewDataBinder<Data> {

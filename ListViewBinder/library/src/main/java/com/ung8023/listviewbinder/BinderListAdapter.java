@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * @author Ung
  * @date 2018/3/16 17:30
- * @description
+ * @description BinderListAdapter for ListView
  */
 
 public class BinderListAdapter<Data> extends BaseAdapter{

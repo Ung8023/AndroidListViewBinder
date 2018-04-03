@@ -5,7 +5,7 @@ import com.ung8023.listviewbinder.ViewHolder;
 /**
  * @author Ung
  * @date 2018/4/3 11:14
- * @description
+ * @description Binder For RecyclerView
  */
 
 public interface ListViewDataBinder<Data> extends ViewDataBinder<ViewHolder, Data> {

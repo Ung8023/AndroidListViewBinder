@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * @author Ung
  * @date 2018/4/3 10:53
- * @description
+ * @description BaseRecyclerAdapter for RecyclerView
  */
 
 public abstract class BaseRecyclerAdapter<Data, V extends View> extends RecyclerView.Adapter<ViewWrapper<V>> {
