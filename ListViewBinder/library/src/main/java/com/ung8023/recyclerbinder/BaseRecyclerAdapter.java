@@ -17,6 +17,8 @@ public abstract class BaseRecyclerAdapter<Data, V extends View> extends Recycler
 
     protected List<Data> dataList;
 
+    protected abstract V onCreateItemView(ViewGroup parent, int viewType);
+
     @Override
     public int getItemCount() {
         return dataList == null ? 0 : dataList.size();
@@ -30,8 +32,6 @@ public abstract class BaseRecyclerAdapter<Data, V extends View> extends Recycler
 
     @Override
     public abstract void onBindViewHolder(@NonNull ViewWrapper<V> holder, int position);
-
-    protected abstract V onCreateItemView(ViewGroup parent, int viewType);
 
     public void setDataList(List<Data> dataList) {
         this.dataList = dataList;

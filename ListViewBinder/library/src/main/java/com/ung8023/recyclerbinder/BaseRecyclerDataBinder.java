@@ -20,6 +20,11 @@ public abstract class BaseRecyclerDataBinder<Data> implements RecyclerViewDataBi
     }
 
     @Override
+    public View getItemView() {
+        return null;
+    }
+
+    @Override
     public void bindViewData(ViewWrapper viewWrapper, final Data data, final int position) {
         viewWrapper.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -29,10 +34,5 @@ public abstract class BaseRecyclerDataBinder<Data> implements RecyclerViewDataBi
                 }
             }
         });
-    }
-
-    @Override
-    public View getItemView() {
-        return null;
     }
 }
