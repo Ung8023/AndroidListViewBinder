@@ -37,7 +37,7 @@ task clean(type: Delete) {
 
 
 ext {
-    userOrg = 'ung'
+    userOrg = 'unglove'
     groupId = 'com.ung8023'
     uploadName = 'android-list-binder'
     publishVersion = '1.0.0'
